@@ -1,0 +1,311 @@
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/*PAGINA INICIO Y ETIQUETAS COMUNES A TODAS LAS PAGINAS*/
+#grid-container{
+        display: grid;
+        height: 100vh;
+        grid-template-areas: 
+        "header header header"
+        "principal principal principal"
+        "contenido contenido contenido"
+        "mapa foto lateral"
+        "footer footer footer";
+        grid-template-rows: 90px 100px auto auto 90px;
+        gap: 10px;
+}
+
+.header {
+    grid-area: header;
+    background-color: #ffeef8;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-items: space-between;
+    align-items: space-between;
+    position: sticky;
+    top: 0;  
+}
+
+/*ESTILO PARA PISAR BT*/
+.color_bt {
+    background-color: #ffeef8 !important;
+
+}
+
+.gradiente_bt {
+    background-image: linear-gradient(to bottom, #ffeef8 , white);
+}
+
+/*FIN ESTILO PARA PISAR BT*/
+
+.header_logo img {
+    width: 180px;
+    height: auto;
+}
+
+.header .nav_menuP ul {
+     display: flex;
+     justify-content: space-between;
+     align-content: space-between;
+     flex-wrap: wrap; 
+    list-style: none;
+}
+
+.header .nav_menuP ul li{
+    margin-left: 75px;
+    margin-top: 60px;
+    margin-bottom: 15px;
+    padding-right: 40px;
+}
+
+.header .nav_menuP ul li a {
+    color:#CB9E6C;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.header .nav_menuP ul li a:hover {
+    height: 120px; width: 150px;
+    padding: 10px;
+    background-color: rgb(255, 254, 235);
+}
+
+.container_footer {
+    grid-area: footer;
+    background-color: rgb(255, 182, 233);
+    text-align:center ;
+    list-style: none;
+}
+
+.footer_mensaje p {
+    color: black;
+}
+.footer_ig ul{
+    list-style: none;
+}
+
+.footer_ig a{
+    color: white;
+    text-decoration: none;
+    background-color:fuchsia;
+    border-radius:20%;     
+}
+
+
+.principal{
+    grid-area: principal;
+    background-color: #FFCEEC;
+}
+    
+.presentacion_titulo {
+    color: #ff5ec1; 
+    padding: 10px;
+    text-align: center;
+    background-image: linear-gradient(to bottom, #f8cbe5 , white);          
+}
+
+.principal .presentacion_texto{
+    color:#AE7726;
+    padding: 10px;
+    width: 100%;
+    height: 40px;
+}
+
+.galeria  {
+   background-color: #ffeef8;
+}
+
+.galeria_productos {
+    grid-area: contenido;
+}
+    
+.galeria_productos img {
+    width: 100%;
+    height: auto;
+}
+
+#galeria .banner img{
+    grid-area:galeria;
+    width: 100%;
+}
+
+ .lateral {
+    display: flex;
+    grid-area: lateral;
+    display: flex;
+    font-style: italic;
+    color: black;
+    font-size: 1em;
+ }
+.lateral p {
+justify-self: center;
+align-self: center;
+
+
+
+}
+.intro_foto {
+    grid-area: foto;
+    display: flex;
+ }
+    
+.intro_foto img{
+    justify-self: center;
+    align-self: center;
+    width:350px;
+    height: auto;
+}
+
+.container_ubicacion {
+    grid-area: mapa;
+    width: 100%;
+    height: auto; 
+}
+
+.container_ubicacion h4 {
+    color:darkred
+}
+
+.container_ubicacion .mapa {
+    width: 390px;
+    height:300px;
+    /*style="border:0;" allowfullscreen="" loading="lazy"*/ /* asi estaba en enlace de YT, yo modifique las medidas*/
+}
+
+.mapa {
+    width: 390px;
+    height:300px;
+    /*style="border:0;" allowfullscreen="" loading="lazy"*/ /* asi estaba en enlace de YT, yo modifique las medidas*/
+}
+
+/*PAGINA PREGUNTAS FRECUENTES*/
+/* #faq .faq_menu {
+    background-color: ffeef8;
+    border-style: solid;
+    border-color: rgb(252, 156, 66);
+    color: #CD9D33;
+    padding: 20px;
+    text-align: justify;
+}
+
+#faq .faq_menu ul li a{
+    color: grey;
+} */
+
+
+#faq {
+    grid-area: contenido;
+}
+#faq h4 {
+    font-size: 20px;
+    color: hotpink;
+    font-style:italic ;
+    margin: 20px;
+}
+
+#faq p {
+    color: grey;
+    margin: 45px;
+}
+
+/*PAGINA CONTACTO*/
+.form {
+    grid-area: foto;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-items: center;
+    border:1px solid #ccc;
+    margin:20px;
+    padding:20px;
+    color:violet    
+}
+
+.form ul {
+    list-style: none;
+}
+
+.form label{
+    font-size: 14px;
+    padding: 8px;
+    line-height: 1.6px;
+    display: block;
+    width: 100%;
+}
+
+.form input textarea{
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+
+input:focus {
+    border:1px solid rgb(228, 91, 198)
+}
+
+input[type="submit"] {
+    margin-bottom: 0;
+    background-color: pink;
+    border: none;
+}
+
+input[type="reset"] {
+    margin-bottom: 0;
+    background-color: pink;
+    border: none;
+}
+
+input[type="submit"]:hover {
+    background-color: honeydew;
+    cursor: pointer;   
+}
+
+input[type="reset"]:hover {
+    background-color:honeydew ;
+    cursor: pointer;
+}
+   
+
+/*PAGINA SOBRE NOSOTROS*/
+
+.sobrenosotros {
+    grid-area: contenido;
+
+}
+.sobrenosotros p{
+    color:grey;
+    font-style: italic;
+    margin: 40px;
+}
+
+
+/*---------------------------------------RESPONSIVE------------------------------*/
+
+@media (min-width: 320px) and (max-width:480px) {
+#grid-container {
+ display: flex;
+ flex-direction: column;
+
+}
+}
+
+@media (min-width: 481px) {
+    #grid-container {
+     display: flex;
+     flex-direction: column;
+    
+    }
+
+    }
+    
+
