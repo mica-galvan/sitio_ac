@@ -8,7 +8,7 @@
 
 
 /*PAGINA INICIO Y ETIQUETAS COMUNES A TODAS LAS PAGINAS*/
-#grid-container{
+#grid-container{   /*!!!!!ESTRUCTURA GRID!!!!*/
         display: grid;
         height: 100vh;
         grid-template-areas: 
@@ -33,18 +33,6 @@
     position: sticky;
     top: 0;  
 }
-
-/*ESTILO PARA PISAR BT*/
-.color_bt {
-    background-color: #ffeef8 !important;
-
-}
-
-.gradiente_bt {
-    background-image: linear-gradient(to bottom, #ffeef8 , white);
-}
-
-/*FIN ESTILO PARA PISAR BT*/
 
 .header_logo img {
     width: 180px;
@@ -137,33 +125,6 @@
     width: 100%;
 }
 
- .lateral {
-    display: flex;
-    grid-area: lateral;
-    display: flex;
-    font-style: italic;
-    color: black;
-    font-size: 1em;
- }
-.lateral p {
-justify-self: center;
-align-self: center;
-
-
-
-}
-.intro_foto {
-    grid-area: foto;
-    display: flex;
- }
-    
-.intro_foto img{
-    justify-self: center;
-    align-self: center;
-    width:350px;
-    height: auto;
-}
-
 .container_ubicacion {
     grid-area: mapa;
     width: 100%;
@@ -186,95 +147,82 @@ align-self: center;
     /*style="border:0;" allowfullscreen="" loading="lazy"*/ /* asi estaba en enlace de YT, yo modifique las medidas*/
 }
 
-/*PAGINA PREGUNTAS FRECUENTES*/
-/* #faq .faq_menu {
-    background-color: ffeef8;
-    border-style: solid;
-    border-color: rgb(252, 156, 66);
-    color: #CD9D33;
-    padding: 20px;
-    text-align: justify;
-}
-
-#faq .faq_menu ul li a{
-    color: grey;
-} */
-
-
-#faq {
-    grid-area: contenido;
-}
-#faq h4 {
-    font-size: 20px;
-    color: hotpink;
-    font-style:italic ;
-    margin: 20px;
-}
-
-#faq p {
-    color: grey;
-    margin: 45px;
-}
 
 /*PAGINA CONTACTO*/
-.form {
-    grid-area: foto;
-    width: 100%;
+
+.formu {
+    width: 40%;
     height: auto;
-    align-items: center;
-    justify-items: center;
     border:1px solid #ccc;
     margin:20px;
     padding:20px;
     color:violet    
 }
 
-.form ul {
+.formu ul {
     list-style: none;
 }
 
-.form label{
-    font-size: 14px;
-    padding: 8px;
-    line-height: 1.6px;
-    display: block;
-    width: 100%;
+.formu label{
+    font-size: 18px;
+    padding: 14px;
+    line-height: 2px;
+    width: 400px;
+    height: auto;
 }
 
-.form input textarea{
-    margin-bottom: 20px;
+.formu input textarea{
+    margin-bottom: 22px;
     width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
+    padding: 14px;
     border: 1px solid #ccc;
+
 }
 
 input:focus {
     border:1px solid rgb(228, 91, 198)
 }
 
-input[type="submit"] {
-    margin-bottom: 0;
-    background-color: pink;
-    border: none;
-}
-
-input[type="reset"] {
-    margin-bottom: 0;
-    background-color: pink;
+.boton {
+    margin-bottom: 0.7rem;
+    background-color: rgb(250, 227, 231);
     border: none;
 }
 
 input[type="submit"]:hover {
-    background-color: honeydew;
+    background-color: pink;
     cursor: pointer;   
 }
 
 input[type="reset"]:hover {
-    background-color:honeydew ;
+    background-color:pink ;
     cursor: pointer;
 }
    
+/*PAGINA FAQ*/
+
+#faq {
+    grid-area: contenido;
+}
+
+
+#faq h4 {
+    font-size: 20px;
+    color: rgb(255, 61, 158);
+    font-style: oblique;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top: 30px;
+    margin-bottom: 30px;    
+}
+
+#faq p {
+    color: rgb(163, 162, 162);
+    margin-left: 120px;
+    margin-right: 120px;
+}
+
+
 
 /*PAGINA SOBRE NOSOTROS*/
 
@@ -285,11 +233,25 @@ input[type="reset"]:hover {
 .sobrenosotros p{
     color:grey;
     font-style: italic;
-    margin: 40px;
+    margin-left: 120px;
+    margin-right: 120px;
 }
 
 
-/*---------------------------------------RESPONSIVE------------------------------*/
+
+/*ESTILO PARA PISAR BT*/
+.color_bt {
+    background-color: #ffeef8 !important;
+
+}
+
+.gradiente_bt {
+    background-image: linear-gradient(to bottom, #ffeef8 , white);
+}
+
+/*FIN ESTILO PARA PISAR BT*/
+
+/*---------------------------------------RESPONSIVE BASICO SIN BT------------------------------*/
 
 @media (min-width: 320px) and (max-width:480px) {
 #grid-container {
