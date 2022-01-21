@@ -1,0 +1,71 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  /*PAGINA INICIO Y ETIQUETAS COMUNES A TODAS LAS PAGINAS*/
+  #grid-container {
+    /*!!!!!ESTRUCTURA GRID!!!!*/
+    display: grid;
+    height: 100vh;
+    //grid-template-areas: "header header header"
+    //                     "contenido contenido contenido"
+    //                     "footer footer footer";
+    grid-template-rows: 90px 100px auto auto 90px;
+    gap: 10px;
+  }
+  
+  $colorprincipal: #ffeef8;
+  
+  .header {
+    grid-area: header;
+    background-color: $colorprincipal;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-items: space-between;
+    align-items: space-between;
+    position: sticky;
+    top: 0;
+  
+    &_logo {
+      img {
+        width: 180px;
+        height: auto;
+      }
+    }
+  }
+  
+  //contenido page faq
+  #faq {
+    grid-area: contenido;
+  
+    h4 {
+      font-size: 20px;
+      color: rgb(255, 61, 158);
+      font-style: oblique;
+      margin-left: 150px;
+      margin-right: 150px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+  
+    p {
+      color: rgb(163, 162, 162);
+      margin-left: 120px;
+      margin-right: 120px;
+    }
+  }
+  
+  /*ESTILO PARA PISAR BT*/
+  .color_bt {
+    background-color: $colorprincipal !important;
+  }
+  
+  .gradiente_bt {
+    background-image: linear-gradient(to bottom, $colorprincipal, white);
+  }
+  
