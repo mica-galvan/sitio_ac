@@ -17,8 +17,12 @@
     gap: 10px;
   }
   
+
+  //estilos - map get - mixin -extend -vars
   $colorprincipal: #ffeef8;
-  
+  $heigth: 30px;
+
+
   .header {
     grid-area: header;
     background-color: $colorprincipal;
@@ -38,15 +42,22 @@
       }
     }
   }
+
+
+  /*contenido page faq y sobre nosotros*/
+  $estilosentexto: (
+    colort: #ff3d9e,
+    estilofuente: oblique,
+    tamañofuente: 20px,
+  );
   
-  //contenido page faq
-  #faq {
+  #textodeco {
     grid-area: contenido;
   
     h4 {
-      font-size: 20px;
-      color: rgb(255, 61, 158);
-      font-style: oblique;
+      font-size: map-get($estilosentexto, tamañofuente);
+      color:map-get($estilosentexto, colort);
+      font-style:map-get($estilosentexto, estilofuente);
       margin-left: 150px;
       margin-right: 150px;
       margin-top: 30px;
@@ -58,7 +69,35 @@
       margin-left: 120px;
       margin-right: 120px;
     }
+
+    a {
+      color:rgb(255, 61, 158)
+    }
+   
   }
+
+  /* Sobre nosotros*/
+
+  .sobrenosotros {
+    grid-area: contenido;
+   
+   .tsn {
+      font-style: italic;
+      margin-left: 120px;
+      margin-right: 120px;
+    }
+ @mixin titulo {
+   height: $heigth
+
+ }
+    p {
+      @extend .tsn;
+      @include titulo()
+        
+    }
+
+    }
+
   
   /*ESTILO PARA PISAR BT*/
   .color_bt {

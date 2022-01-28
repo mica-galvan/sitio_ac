@@ -40,11 +40,12 @@
   height: auto;
 }
 
-#faq {
+/*contenido page faq y sobre nosotros*/
+#textodeco {
   grid-area: contenido;
 }
 
-#faq h4 {
+#textodeco h4 {
   font-size: 20px;
   color: #ff3d9e;
   font-style: oblique;
@@ -54,10 +55,29 @@
   margin-bottom: 30px;
 }
 
-#faq p {
+#textodeco p {
   color: #a3a2a2;
   margin-left: 120px;
   margin-right: 120px;
+}
+
+#textodeco a {
+  color: #ff3d9e;
+}
+
+/* Sobre nosotros*/
+.sobrenosotros {
+  grid-area: contenido;
+}
+
+.sobrenosotros .tsn, .sobrenosotros p {
+  font-style: italic;
+  margin-left: 120px;
+  margin-right: 120px;
+}
+
+.sobrenosotros p {
+  height: 30px;
 }
 
 /*ESTILO PARA PISAR BT*/

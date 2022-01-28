@@ -201,12 +201,12 @@ input[type="reset"]:hover {
    
 /*PAGINA FAQ*/
 
-#faq {
+#textodeco {
     grid-area: contenido;
 }
 
 
-#faq h4 {
+#textodeco h4 {
     font-size: 20px;
     color: rgb(255, 61, 158);
     font-style: oblique;
@@ -216,7 +216,7 @@ input[type="reset"]:hover {
     margin-bottom: 30px;    
 }
 
-#faq p {
+#textodeco p {
     color: rgb(163, 162, 162);
     margin-left: 120px;
     margin-right: 120px;
