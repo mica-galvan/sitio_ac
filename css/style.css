@@ -150,7 +150,7 @@
 
 /*PAGINA CONTACTO*/
 
-.formu {
+/* .formu {
     width: 40%;
     height: auto;
     border:1px solid #ccc;
@@ -177,28 +177,23 @@
     padding: 14px;
     border: 1px solid #ccc;
 
-}
+} */
 
-input:focus {
+.form-control:focus {
     border:1px solid rgb(228, 91, 198)
 }
 
 .boton {
     margin-bottom: 0.7rem;
-    background-color: rgb(250, 227, 231);
+    background-color: pink;
     border: none;
 }
 
-input[type="submit"]:hover {
-    background-color: pink;
+.boton:hover {
+    background-color: rgb(245, 117, 245);
     cursor: pointer;   
 }
 
-input[type="reset"]:hover {
-    background-color:pink ;
-    cursor: pointer;
-}
-   
 /*PAGINA FAQ*/
 
 #textodeco {
@@ -249,6 +244,46 @@ input[type="reset"]:hover {
     background-image: linear-gradient(to bottom, #ffeef8 , white);
 }
 
+.title_img{
+    width: 500px;
+    height: auto;
+}
+
+.colecciones {
+    color: #ff5ec1;
+    width: 500px;
+    height: auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.texto_colec{
+    color:#bda74e;
+    padding-left: 90px;
+
+}
+.fondo_light {
+    background-color: #fff5fb;
+
+}
+.fondo_dark {
+    background-color: pink;
+}
+
+.espacio_top_bottom {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+}
+
+.footer_bottom {
+    margin-bottom: 0;
+}
+
+.img_aci_logo {
+    width: 200px;
+    height: auto;
+}
 /*FIN ESTILO PARA PISAR BT*/
 
 /*---------------------------------------RESPONSIVE BASICO SIN BT------------------------------*/
