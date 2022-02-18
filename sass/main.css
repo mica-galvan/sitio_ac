@@ -6,9 +6,9 @@
   font-family: "Montserrat", sans-serif;
 }
 
-/*PAGINA INICIO Y ETIQUETAS COMUNES A TODAS LAS PAGINAS*/
+/*PAGINA INICIO Y ETIQUETAS COMUNES A TODAS LAS PAGINAS
+  SCSS EN NAV BAR Y FOOTER + PAGE SOBRE NOSOTROS + PAGE PREGUNTAS PRECUENTES*/
 #grid-container {
-  /*!!!!!ESTRUCTURA GRID!!!!*/
   display: -ms-grid;
   display: grid;
   height: 100vh;
@@ -46,42 +46,115 @@
 }
 
 #textodeco h4 {
-  font-size: 20px;
-  color: #ff3d9e;
+  font-size: 25px;
   font-style: oblique;
-  margin-left: 150px;
-  margin-right: 150px;
+  background-color: #ffeef8;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 #textodeco p {
   color: #a3a2a2;
-  margin-left: 120px;
-  margin-right: 120px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 #textodeco a {
-  color: #ff3d9e;
+  color: #6f6268;
 }
 
 /* Sobre nosotros*/
-.sobrenosotros {
-  grid-area: contenido;
+.colecciones_principal_sn {
+  background-color: #ffffff;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-top: 30px;
 }
 
-.sobrenosotros .tsn, .sobrenosotros p {
-  font-style: italic;
-  margin-left: 120px;
-  margin-right: 120px;
+.colecciones_principal_sn h3 {
+  color: #ff679c;
+  font-size: xx-large;
+  text-align: center;
+}
+
+.colecciones_principal_sn .subtitulo_sn {
+  color: #746b6e;
+  font-size: medium;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .colecciones_principal_sn .colecciones_principal {
+    max-width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.embed-container_sn {
+  position: relative;
+  padding-bottom: 50%;
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 50px;
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.embed-container_sn .video_responsive {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sobrenosotros {
+  grid-area: contenido;
+  background-color: rgba(255, 0, 128, 0.1);
+  margin-left: 40px;
+  margin-right: 40px;
   margin-top: 30px;
+  border-radius: 1%;
+  border-style: dashed;
+  border-color: pink;
+}
+
+.tsn, .texto_pages {
+  padding-left: 50px;
+  padding-right: 50px;
   margin-bottom: 30px;
 }
 
-.sobrenosotros .slogan {
-  height: 50px;
+.slogan {
+  height: 20px;
   font-style: oblique;
   color: #ff3d9e;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.parrafo_final_margin {
+  padding-bottom: 40px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.parrafo_primer_margin {
+  padding-top: 40px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 /*ESTILO PARA PISAR BT*/
@@ -92,5 +165,15 @@
 .gradiente_bt {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ffeef8), to(white));
   background-image: linear-gradient(to bottom, #ffeef8, white);
+}
+
+.footer_bottom {
+  margin-top: 100px;
+}
+
+.nav-link:hover {
+  color: #f7b9ca !important;
+  background-color: rgba(250, 223, 237, 0.3) !important;
+  font-size: 17.5px;
 }
 /*# sourceMappingURL=main.css.map */

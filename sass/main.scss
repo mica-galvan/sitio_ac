@@ -5,22 +5,18 @@
     font-family: "Montserrat", sans-serif;
   }
   
-  /*PAGINA INICIO Y ETIQUETAS COMUNES A TODAS LAS PAGINAS*/
+  /*PAGINA INICIO Y ETIQUETAS COMUNES A TODAS LAS PAGINAS
+  SCSS EN NAV BAR Y FOOTER + PAGE SOBRE NOSOTROS + PAGE PREGUNTAS PRECUENTES*/
   #grid-container {
-    /*!!!!!ESTRUCTURA GRID!!!!*/
     display: grid;
     height: 100vh;
-    //grid-template-areas: "header header header"
-    //                     "contenido contenido contenido"
-    //                     "footer footer footer";
     grid-template-rows: 90px 100px auto auto 90px;
     gap: 10px;
   }
   
-
   //estilos - map get - mixin -extend -vars
   $colorprincipal: #ffeef8;
-  $heigth: 50px;
+  $heigth: 20px;
 
 
   .header {
@@ -46,9 +42,9 @@
 
   /*contenido page faq y sobre nosotros*/
   $estilosentexto: (
-    colort: #ff3d9e,
+    color: grey,
     estilofuente: oblique,
-    tamañofuente: 20px,
+    tamañofuente: 25px,
   );
   
   #textodeco {
@@ -58,59 +54,135 @@
       font-size: map-get($estilosentexto, tamañofuente);
       color:map-get($estilosentexto, colort);
       font-style:map-get($estilosentexto, estilofuente);
-      margin-left: 150px;
-      margin-right: 150px;
+      background-color: #ffeef8;
+      text-align: center;
+      padding-top: 15px;
+      padding-bottom: 15px;
       margin-top: 30px;
-      margin-bottom: 30px;
+      margin-bottom: 50px;
     }
   
     p {
       color: rgb(163, 162, 162);
-      margin-left: 120px;
-      margin-right: 120px;
+      margin-left: 20px;
+      margin-right: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
     a {
-      color:rgb(255, 61, 158)
+      color:rgb(111, 98, 104)
     }
-   
   }
 
   /* Sobre nosotros*/
 
-  .sobrenosotros {
-    grid-area: contenido;
-   
-   .tsn {
-      font-style: italic;
-      margin-left: 120px;
-      margin-right: 120px;
-      margin-top: 30px;
-      margin-bottom: 30px;
-
-
+  .colecciones_principal_sn{
+    background-color:#ffffff;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 30px;
+    
+     h3 {
+        color: #ff679c;
+        font-size:xx-large;
+        text-align:  center;
     }
- @mixin titulo {
+   .subtitulo_sn {
+        color: #746b6e;
+        font-size:medium;
+        text-align:  center;
+    }
+    
+    @media (max-width:480px) {
+        .colecciones_principal{
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+          }
+        }
+
+   .embed-container_sn {
+    position: relative;
+    padding-bottom: 50%;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 50px;
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+
+   .video_responsive{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+   }
+
+   .sobrenosotros {
+    grid-area: contenido;
+    background-color: rgba(255, 0, 128, 0.1);
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 30px;
+    border-radius: 1%;
+    border-style: dashed;
+    border-color: pink;
+   }
+
+   .tsn {
+     padding-left: 50px;
+     padding-right: 50px;
+     margin-bottom: 30px;
+    }
+
+   @mixin titulo {
    height: $heigth;
- }
-    p {
-      @extend .tsn;
-       
+   }
+    .texto_pages {
+      @extend .tsn; 
     }
     .slogan {
       @include titulo();
       font-style: oblique;
       color: rgb(255, 61, 158);
+      padding-left: 50px;
+      padding-right: 50px;
     } 
-  }
 
-  
-  /*ESTILO PARA PISAR BT*/
-  .color_bt {
+   .parrafo_final_margin {
+    padding-bottom: 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+   }
+   
+   .parrafo_primer_margin {
+    padding-top: 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+   }
+
+    /*ESTILO PARA PISAR BT*/
+   .color_bt {
     background-color: $colorprincipal !important;
-  }
+   }
   
-  .gradiente_bt {
+   .gradiente_bt {
     background-image: linear-gradient(to bottom, $colorprincipal, white);
-  }
+   }
   
+   .footer_bottom {
+    margin-top:100px; 
+   }
+
+   .nav-link { 
+        &:hover {
+    color: #f7b9ca !important;
+    background-color: rgba(250, 223, 237, 0.3) !important;
+    font-size: 17.5px;
+   }
+ }
+
