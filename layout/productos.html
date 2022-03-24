@@ -16,6 +16,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;1,100;1,300;1,900&display=swap"rel="stylesheet">
+		<script async src="../js/script.js"></script> <!-- JAVASCRIPT -->
 	</head>
 	<body>
 		<!-- SIMBOLOS SVG -->
@@ -29,7 +30,9 @@
 			<symbol id="youtube" viewBox="0 0 16 16">
 			<path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
 		</svg>
+	
 		<!-- FIN SIMBOLOS SVG -->
+
 		<!-- BARRA DE NAVEGACION CON BT -->
 		<section>
 			<div class="sticky-top header border-bottom">
@@ -87,77 +90,126 @@
 		<section>
 			<div class="album py-5 ">
 				<div class="container">
-					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
 						<div class="col">
 							<div class="card shadow-sm">
-								<img class="card-img-top" src="../LocalFotos/body annika.jpeg" alt="Body Annika">
+								<img class="card-img-top" src="../LocalFotos/body annika.jpeg" alt="BodyAnnika">
 								<div class="card-body">
-									<p class="card-text">Body Annika </p>
+									<p class="card-text">Body Annika $3000 </p>									
 								</div>
+								<button id="agregarBody" type="button" class="btn boton_carrito btn-sm">Agregar al
+									carrito</button>
+								
 							</div>
 						</div>
 						<div class="col">
 							<div class="card shadow-sm">
-								<img class="card-img-top" src="../LocalFotos/conjunto alondra.jpeg" alt="Conjunto Alondra">
+								<img class="card-img-top" src="../LocalFotos/conju_lolipop.jpg" alt="ConjuntoLolipop">
 								<div class="card-body">
-									<p class="card-text">Conjunto Alondra Forrado</p>
+									<p class="card-text">Conjunto Lolipop $1500</p>
 								</div>
+								<button id="agregarLolipop" type="button" class="btn boton_carrito btn-sm">Agregar al
+									carrito</button>
 							</div>
 						</div>
 						<div class="col">
 							<div class="card shadow-sm">
-								<img class="card-img-top" src="../LocalFotos/conjunto annika bra.jpeg" alt="Conjunto Annika">
+								<img class="card-img-top" src="../LocalFotos/conjunto annika bra.jpeg" alt="ConjuntoAnnika">
 								<div class="card-body">
-									<p class="card-text">Conjunto Annika </p>
+									<p class="card-text">Conjunto Annika $1500</p>
 								</div>
+								<button id="agregarConjuAnnika" type="button" class="btn boton_carrito btn-sm">Agregar al
+									carrito</button>
 							</div>
 						</div>
 						<div class="col">
 							<div class="card shadow-sm">
-								<img class="card-img-top" src="../LocalFotos/conjunto medusa.jpeg" alt="Conjunto Medusa">
+								<img class="card-img-top" src="../LocalFotos/gigi_rojo.jpg" alt="SetGigiRojo">
 								<div class="card-body">
-									<p class="card-text">Conjunto Medusa </p>
+									<p class="card-text">Set Gigi - 4 piezas $2500 </p>
 								</div>
+								<button id="agregarSetGigiRojo" type="button" class="btn boton_carrito btn-sm">Agregar al
+									carrito</button>
 							</div>
 						</div>
 						<div class="col">
 							<div class="card shadow-sm">
-								<img class="card-img-top" src="../LocalFotos/conjunto moira.jpeg" alt="Conjunto Moira">
+								<img class="card-img-top" src="../LocalFotos/conjunto moira.jpeg" alt="ConjuntoMoira">
 								<div class="card-body">
-									<p class="card-text">Conjunto Moira Forrado</p>
+									<p class="card-text">Conjunto Moira $2000</p>
 								</div>
+								<button id="agregarMoira" type="button" class="btn boton_carrito btn-sm">Agregar al
+									carrito</button>
 							</div>
 						</div>
 						<div class="col">
 							<div class="card shadow-sm">
-								<img class="card-img-top" src="../LocalFotos/conjunto morgana.jpeg" alt="Conjunto Morgana">
+								<img class="card-img-top" src="../LocalFotos/comfy_rosa.jpg" alt="ConjuntoComfy">
 								<div class="card-body">
-									<p class="card-text">Conjunto Morgana Clasico</p>
+									<p class="card-text">Conjunto Comfy Rosa $1500</p>
 								</div>
+								<button id="agregarComfy" type="button" class="btn boton_carrito btn-sm">Agregar al
+									carrito</button>
 							</div>
 						</div>
 						<div class="col">
 							<div class="card shadow-sm">
-								<img class="card-img-top" src="../LocalFotos/morgana new.jpeg" alt="Conjunto Minerva">
+								<img class="card-img-top" src="../LocalFotos/morgana new.jpeg" alt="ConjuntoMinerva">
 								<div class="card-body">
-									<p class="card-text">Conjunto Minerva </p>
+									<p class="card-text">Conjunto Minerva $1000 </p>
 								</div>
+								<button id="agregarMinervaNew" type="button" class="btn boton_carrito btn-sm">Agregar al
+									carrito</button>
 							</div>
 						</div>
 						<div class="col">
 							<div class="card shadow-sm">
-								<img class="card-img-top" src="../LocalFotos/set gigi.jpeg" alt="Set Gigi">
+								<img class="card-img-top" src="../LocalFotos/gigi_negro.jpg" alt="SetGigiNegro">
 								<div class="card-body">
-									<p class="card-text">Set Gigi - 4 piezas </p>
+									<p class="card-text">Set Gigi - 4 piezas $2500 </p>
 								</div>
+								<button id="agregarSetGigiNegro" type="button" class="btn boton_carrito btn-sm">Agregar al
+									carrito</button>
 							</div>
 						</div>
 						<div class="col">
 							<div class="card shadow-sm">
-								<img class="card-img-top" src="../LocalFotos/conjunto sofia.jpeg" alt="Conjunto Sofia">
+								<img class="card-img-top" src="../LocalFotos/conjunto alondra.jpeg" alt="ConjuntoAlondra">
 								<div class="card-body">
-									<p class="card-text">Conjunto Sofia</p>
+									<p class="card-text">Conjunto Alondra $2000 </p>
 								</div>
+								<button id="agregarAlondra" type="button" class="btn boton_carrito btn-sm">Agregar al
+									carrito</button>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card shadow-sm">
+								<img class="card-img-top" src="../LocalFotos/annika_aro_bicolor.jpg" alt="ConjuntoAnnikaAro">
+								<div class="card-body">
+									<p class="card-text">Conjunto Annika Aro $2000 </p>
+								</div>
+								<button id="agregarAnnikaAro" type="button" class="btn boton_carrito btn-sm">Agregar al
+									carrito</button>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card shadow-sm">
+								<img class="card-img-top" src="../LocalFotos/pack_pastel.jpg" alt="Bombisx3">
+								<div class="card-body">
+									<p class="card-text">Pack Bombis Pastel $1000 </p>
+								</div>
+								<button id="agregarPackBombis" type="button" class="btn boton_carrito btn-sm">Agregar al
+									carrito</button>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card shadow-sm">
+								<img class="card-img-top" src="../LocalFotos/minerva_clasico.jpg" alt="ConjuntoMinervaClasic">
+								<div class="card-body">
+									<p class="card-text">Conjunto Minerva $1000 </p>
+								</div>
+								<button id="agregarMinervaClasico" type="button" class="btn boton_carrito btn-sm">Agregar al
+									carrito</button>
 							</div>
 						</div>
 					</div>
@@ -165,6 +217,58 @@
 			</div>
 		</section>
 		<!--  FIN GALERIA DE PRODUCTOS CON BT-->
+
+
+
+			<!--  CARRITO - SIMULADOR JS-->
+	<div class="cover-container d-flex text-center text-black p-3 mx-auto flex-column">
+		<main class="px-3">
+			<h1 class="info_carrito"> DETALLE DE CARRITO</h1>
+			<p id="textoCarritoVacio" class="text-dark">Su carrito se encuentra vacío</p>
+			<p class="lead">
+
+		</main>
+	</div>
+
+
+	<div class="cover-container d-flex text-center text-black p-3 mx-auto flex-column">
+		<table id="tablaCarrito" class="table">
+			<thead>
+				<tr>
+					<th scope="col">Producto</th>
+					<th scope="col">Precio </th>
+				    <th scope="col">&#128465;&#65039;</th>
+
+				</tr>
+			</thead>
+			<tbody id="contenidoCarrito">
+				
+		
+	
+			</tbody>
+		</table>
+		<div>
+			<button id="vaciarCarrito" class="btn btn-secondary">Vaciar Carrito</button>
+		</div>
+	</div>
+
+	
+
+	
+
+
+		
+		
+	  
+	  
+
+	  
+
+		<!-- FIN CARRITO - SIMULADOR JS-->
+
+
+
+
 		<!-- FOOTER-->
 		<section>
 			<div class="container-fluid  color_bt g-4">

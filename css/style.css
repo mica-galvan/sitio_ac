@@ -220,6 +220,17 @@ textarea {
 /*PAGINA FAQ ESTILADO CON SCSS*/
 /*PAGINA SOBRE NOSOTROS ESTILADO CON SCSS*/
 
+/*ESTILO CARRITO DE PAGE PRODUCTOS con bt*/
+.info_carrito {
+	color:#d062af;
+}
+
+.boton_carrito {
+	background-color: #ff679c;
+}
+
+/*FIN ESTILO CARRITO DE PAGE PRODUCTOS*/
+
 
 /*-----------BOOTSTRAP---------------*/
 /*ESTILO PARA PISAR BT*/
