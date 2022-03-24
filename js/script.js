@@ -95,7 +95,8 @@ if (localStorage.getItem("carrito")) {
     carritoObjeto.productos = JSON.parse(localStorage.getItem("carrito"));
     carritoObjeto.maxId = parseInt(localStorage.getItem("maxid"));
 
-    setTimeout(mostrarTabla(), 500); //timer para asegurar que la página cargue el localStorage
+    mostrarTabla();
+    //setTimeout(mostrarTabla(), 500); //timer para asegurar que la página cargue el localStorage
 };
 
 
@@ -157,6 +158,7 @@ botonVaciar.addEventListener("click", mostrarTabla);
 //Carrito
 
 function mostrarTabla() {
+    //setTimeout(null, 100);
 
     let tabla = document.getElementById("contenidoCarrito");
     tabla.innerHTML = "";
