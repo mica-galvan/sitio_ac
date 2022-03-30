@@ -45,8 +45,25 @@ class carritoDeCompra {
         //}
 
         //convertido en TERNARIO con operador ++//
-        (typeof existe !== 'undefined') ? existe.unaCantidad++: this.productos.push(new productoCarrito(producto, this.obtenerNextID()));
-      
+        (typeof existe !== 'undefined') ? existe.unaCantidad++ : this.productos.push(new productoCarrito(producto, this.obtenerNextID()));
+
+
+        Swal.fire({
+            toast: true,
+            position: 'top-right',
+            iconColor: 'pink',
+            customClass: {
+                popup: 'colored-toast'
+            },
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            icon: 'success',
+            title: '&#127881 Agregando al carrito...',
+            color: '',
+            background: '#FFEEF8'
+        })
+
         localStorage.setItem("carrito", JSON.stringify(carritoObjeto.productos)); //localStorage
         localStorage.setItem("maxid", carritoObjeto.maxId);
     }
@@ -58,6 +75,22 @@ class carritoDeCompra {
         //    this.productos.splice(index, 1);
         //}
         index > -1 && this.productos.splice(index, 1); //OPERADOR AND reemplaza lo comentado anteriormente
+
+        Swal.fire({
+            toast: true,
+            position: 'top-right',
+            iconColor: 'pink',
+            customClass: {
+                popup: 'colored-toast'
+            },
+            showConfirmButton: false,
+            timer: 900,
+            timerProgressBar: true,
+            icon: 'error',
+            title: ' &#8987  Quitando del carrito...',
+            color: '',
+            background: '#FFEEF8'
+        })
         localStorage.setItem("carrito", JSON.stringify(carritoObjeto.productos))
         mostrarTabla();
     }
@@ -69,8 +102,19 @@ class carritoDeCompra {
     vaciarElCarrito() {
         this.productos = [];
         this.maxId = 0;
+
+        Swal.fire({
+            title: '¡Listo!',
+            text: 'Su carrito ya está vacío',
+            showConfirmButton: false,
+            background: '#FFEEF8',
+            timer: 1000
+
+        })
         localStorage.setItem("carrito", JSON.stringify(carritoObjeto.productos));
         localStorage.setItem("maxid", carritoObjeto.maxId);
+
+
     }
 
     obtenerNextID() {
@@ -155,6 +199,7 @@ boton12.addEventListener("click", mostrarTabla);
 let botonVaciar = document.getElementById("vaciarCarrito");
 botonVaciar.onclick = () => carritoObjeto.vaciarElCarrito();
 botonVaciar.addEventListener("click", mostrarTabla);
+
 
 //Carrito
 function mostrarTabla() {

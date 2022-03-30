@@ -226,7 +226,8 @@ textarea {
 }
 
 .boton_carrito {
-	background-color: #ff679c;
+	background-color: rgb(255, 179, 199);
+	color: white;
 }
 
 /*FIN ESTILO CARRITO DE PAGE PRODUCTOS*/
