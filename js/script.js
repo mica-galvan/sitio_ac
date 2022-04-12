@@ -64,6 +64,8 @@ class carritoDeCompra {
             background: '#FFEEF8'
         })
 
+        limpiarCalculoCuotas();
+
         localStorage.setItem("carrito", JSON.stringify(carritoObjeto.productos)); //localStorage
         localStorage.setItem("maxid", carritoObjeto.maxId);
     }
@@ -92,6 +94,7 @@ class carritoDeCompra {
             background: '#FFEEF8'
         })
         localStorage.setItem("carrito", JSON.stringify(carritoObjeto.productos))
+        limpiarCalculoCuotas();
         mostrarTabla();
     }
 
@@ -113,6 +116,8 @@ class carritoDeCompra {
         })
         localStorage.setItem("carrito", JSON.stringify(carritoObjeto.productos));
         localStorage.setItem("maxid", carritoObjeto.maxId);
+
+        limpiarCalculoCuotas();
 
 
     }
@@ -200,7 +205,6 @@ let botonVaciar = document.getElementById("vaciarCarrito");
 botonVaciar.onclick = () => carritoObjeto.vaciarElCarrito();
 botonVaciar.addEventListener("click", mostrarTabla);
 
-
 //Carrito
 function mostrarTabla() {
     //setTimeout(null, 100);
@@ -208,6 +212,11 @@ function mostrarTabla() {
     let tabla = document.getElementById("contenidoCarrito");
     tabla.innerHTML = "";
     if (carritoObjeto.productos.length > 0) {
+        document.getElementById("pTotal").hidden = false;
+        document.getElementById("pCuotas").hidden = false;
+        document.getElementById("selectCuotas").hidden = false;
+
+
         document.getElementById("textoCarritoVacio").innerText = "Su carrito contiene " + carritoObjeto.productos.length + " productos"; //contador carrito -->texto que avisa si tiene productos
         //  este producto es un productoCarrito
         for (const productoCart of carritoObjeto.productos) {
@@ -259,5 +268,166 @@ function mostrarTabla() {
         tabla.appendChild(row);
     } else {
         document.getElementById("textoCarritoVacio").innerText = "Su carrito se encuentra vacío"; //contador carrito
+
+        document.getElementById("pTotal").hidden = true;
+        document.getElementById("pCuotas").hidden = true;
+        document.getElementById("selectCuotas").hidden = true;
     }
 };
+
+
+// representa el objeto tarjeta
+class tarjeta {
+    constructor(miId, miTarjeta, misIntereses) {
+        this.pId = miId;
+        this.pTarjeta = miTarjeta;
+        this.pIntereses = [];
+        this.setInteres(misIntereses);
+    }
+
+    setInteres(inte) {
+        for (let queInt of inte) {
+            this.pIntereses.push(new interes(Object.keys(queInt)[0], queInt[Object.keys(queInt)]));
+        };
+    };
+
+};
+
+// representa el objeto cuota/intereses
+class interes {
+    constructor(miCuota, miInteres) {
+        this.pCuota = miCuota;
+        this.pInteres = miInteres;
+    }
+};
+
+// ARRAY de tarjetas
+let tarjetas = [];
+
+// función para cargar intereses en el select correspondiente de acuerdo a la tarjeta seleccionada
+function cargarInteres(procesadora) {
+    if (procesadora == 0) {
+        //let sC = document.getElementById("selectCuotas");
+        //sC.innerHTML = "";
+        limpiarCalculoCuotas();
+    }
+    else {
+        // busca el objeto tarjeta que corresponde a la tarjeta seleccionada en el select
+        let queTarjeta = tarjetas.find(element => element.pId == procesadora);
+
+        // genera el select para las cuotas/intereses
+        let _selectCuotas = document.createElement("select");
+        _selectCuotas.id = "miSelCuotas";
+        _selectCuotas.name = "selCuotas";
+        _selectCuotas.classList.add("selCuotas");
+        _selectCuotas.options[_selectCuotas.options.length] = new Option("Seleccione cantidad de cuotas", "0");
+
+        queTarjeta.pIntereses.forEach(datoInteres => {
+            var texto = datoInteres["pCuota"] + " cuota/s - " + datoInteres["pInteres"] + "% interés";
+            _selectCuotas.options[_selectCuotas.options.length] = new Option(texto, datoInteres["pCuota"]);
+        });
+
+        // eventListener sobre el evento change del select de cuotas
+        _selectCuotas.addEventListener("change", (event) => {
+            calcularCuotas();
+        });
+
+
+        // append del select de cuotas al div correspondiente
+        let sC = document.getElementById("selectCuotas");
+        sC.innerHTML = "";
+        sC.append(_selectCuotas);
+    }
+}
+
+//FETCH del archivo JSON que contiene las tarjetas y sus intereses
+fetch('../js/Tarjetas.json')
+    .then(resp => resp.json())
+    .then(data => {
+        data.forEach(datoTarjeta => {
+            tarjetas.push(new tarjeta(datoTarjeta["Id"], datoTarjeta["Tarjeta"], datoTarjeta["Interes"]))
+        })
+
+        // genera el select para las tarjetas
+        let _select = document.createElement("select");
+        _select.id = "selTarjetas";
+        _select.name = "selTarjetas";
+        _select.classList.add("selTarjetas");
+        _select.options[_select.options.length] = new Option("Seleccione una tarjeta", "0");
+        tarjetas.forEach(datoTarjeta => {
+            _select.options[_select.options.length] = new Option(datoTarjeta["pTarjeta"], datoTarjeta["pId"]);
+        });
+
+        // eventListener sobre el evento change del select de tarjetas
+        _select.addEventListener("change", (event) => {
+            cargarInteres(event.target.value.toString());
+        });
+
+        // append del select de tarjetas al div correspondiente
+        let sT = document.getElementById("selectTarjetas");
+        sT.append(_select);
+
+    })
+    .catch(function (err) {
+        console.log(err.toString());
+    })
+
+// función que calcula total con interés y valor de cada cuota de acuerdo a los valores seleccionados para tarjeta y cuotas
+function calcularCuotas() {
+    var total = 0;
+    total = carritoObjeto.calcularTotal();
+
+    // obtiene el value correspondiente a la tarjeta
+    var tj = document.getElementsByName("selTarjetas");
+    var tjt = tj[0].value;
+
+    // obtiene el value correspondiente a las cuotas
+    var ct = document.getElementsByName("selCuotas");
+    var cts = ct[0].value;
+
+    // busca la tarjeta correspondiente para obtener las cuotas e intereses de la misma
+    let miTjt; // = tarjetas.find(element => element.pId == tjt);
+    if (tjt != '0') {
+        miTjt = tarjetas.find(element => element.pId == tjt);
+    };
+
+    let miInt;
+    let porcentaje;
+    let totalFinal;
+    let valorCuota;
+
+    // calcula valores si: el select de tarjetas es distinto a 0 y el select de cuotas es distinto a 0
+    if (tjt != '0' && cts != '0') {
+        // obtiene el interes que corresponde a la cuota seleccionada
+        miInt = miTjt.pIntereses.find(element => element.pCuota == cts);
+        // calcula el porcentaje de interés
+        porcentaje = parseFloat(miInt.pInteres) / 100;
+
+        // calcula el total con interés
+        totalFinal = total * (1 + porcentaje);
+        // calcula el valor de cada cuota
+        valorCuota = totalFinal / miInt.pCuota;
+
+        // salida a la página de los valores calculados
+        let elemTotal = document.getElementById("pTotal");
+        elemTotal.innerText = "$" + total.toFixed(2) + " (sin interés) || $" + totalFinal.toFixed(2) + " (con interés) || " + miInt.pInteres + "% de interés"
+
+        let elemCuotas = document.getElementById("pCuotas");
+        elemCuotas.innerText = miInt.pCuota + " cuotas de $" + valorCuota.toFixed(2);
+
+    }
+}
+
+// función para limpiar los valores calculados (visual)
+function limpiarCalculoCuotas() {
+    let elemTotal = document.getElementById("pTotal");
+    let elemCuotas = document.getElementById("pCuotas");
+    let divSelCuotas = document.getElementById("selectCuotas");
+
+    let setTarjetas = document.getElementById("selTarjetas");
+    setTarjetas.value = '0';
+
+    elemTotal.innerText = null;
+    elemCuotas.innerText = null;
+    divSelCuotas.innerHTML = null;
+}
