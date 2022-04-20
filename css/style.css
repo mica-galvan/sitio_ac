@@ -282,6 +282,16 @@ textarea {
 	cursor: pointer;
 	font-size: 17.5px;
 }
+
+.pinkCheck:checked{
+	background-color: #ff57ab;
+	border: pink;
+}
+
+.title_pedido {
+	color: #ff57ab !important;
+	font-size: 17.5px;
+}
 /*FIN ESTILO PARA PISAR BT*/
 
 

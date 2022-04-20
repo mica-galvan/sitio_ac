@@ -11,7 +11,6 @@ class producto {
         this.precio = precio;
         this.info = `${this.modelo}, de ${this.tipo}, talle ${this.talle}, color ${this.color}, precio $${this.precio}`;
         this.infoCarrito = `${this.modelo}, de ${this.tipo}, talle ${this.talle}, color ${this.color}`;
-
     }
 };
 
@@ -34,11 +33,8 @@ class carritoDeCompra {
 
     agregar(producto) {
         let existe = this.productos.find(e => e.unProducto.idProducto == producto.idProducto);
-
+        
         (typeof existe !== 'undefined') ? existe.unaCantidad++ : this.productos.push(new productoCarrito(producto, this.obtenerNextID()));
-
-        document.getElementById("contadorCart").innerText = carritoObjeto.productos.length;
-    
 
         Swal.fire({
             toast: true,
@@ -55,20 +51,17 @@ class carritoDeCompra {
             color: '',
             background: '#FFEEF8'
         });
-
+        
         localStorage.setItem("carrito", JSON.stringify(carritoObjeto.productos)); //localStorage
         localStorage.setItem("maxid", carritoObjeto.maxId);
-
-        
     }
 
     quitar(idProdCart) {
         let item = this.productos.find(element => element.unID == idProdCart);
         const index = this.productos.indexOf(item);
-        index > -1 && this.productos.splice(index, 1); 
-
-        document.getElementById("contadorCart").innerText = carritoObjeto.productos.length;
-    
+        
+        index > -1 && this.productos.splice(index, 1);
+        
         Swal.fire({
             toast: true,
             position: 'top-right',
@@ -83,8 +76,11 @@ class carritoDeCompra {
             title: ' &#8987  Quitando del carrito...',
             color: '',
             background: '#FFEEF8'
-        })
+        });
+
         localStorage.setItem("carrito", JSON.stringify(carritoObjeto.productos))
+        limpiarCalculoCuotas();
+        mostrarTabla();
     }
 
     calcularTotal() {
@@ -105,26 +101,17 @@ class carritoDeCompra {
         })
         localStorage.setItem("carrito", JSON.stringify(carritoObjeto.productos));
         localStorage.setItem("maxid", carritoObjeto.maxId);
+
+        limpiarCalculoCuotas();
     }
 
     obtenerNextID() {
-        this.maxId++; 
+        //this.maxId += 1;
+        this.maxId++;  //optimizado
         return this.maxId;
     }
 };
 
-let bodyAnnika = new producto(1, "Body Annika", "encaje", "a medida", "negro", 3000);
-let ConjuLolipop = new producto(2, "Conjunto Lolipop", "puntilla", "t. a medida", "celeste", 1500);
-let ConjuAnnika = new producto(3, "Conjunto Annika", "puntilla", "t. a medida", "natural", 1500);
-let SetGigiNegro = new producto(4, "Set Gigi", "puntilla", "t. a medida", "rojo", 2500);
-let ConjuMoira = new producto(5, "Conjunto Moira", "puntilla", "t. a medida", "rosa viejo", 2000);
-let ConjuComfy = new producto(6, "Conjunto Comfy", "puntilla", "t. a medida", "rosa chicle", 1500);
-let ConjuMinervaNew = new producto(7, "Conjunto Minerva New", "puntilla", "t. a medida", "amarillo", 1000);
-let SetGigiRojo = new producto(8, "Conjunto Gigi", "puntilla", "t. a medida", "negro", 2500);
-let ConjuAlondra = new producto(9, "Conjunto Alondra ", "puntilla", "t. a medida", "vison", 2000);
-let ConjuAnnikaAro = new producto(10, "Conjunto Annika Aro ", "puntilla", "t. a medida", "bicolor", 2000);
-let PackBombis = new producto(11, "Pack Bombis x 3 ", "puntilla", "t. a medida", "pastel surtidos", 1000);
-let ConjuMinervaClasico = new producto(12, "Conjunto Minerva Clasico ", "puntilla", "t. a medida", "blanco", 1000);
 let carritoObjeto = new carritoDeCompra();
 
 // levanta el localStorage
@@ -132,62 +119,32 @@ if (localStorage.getItem("carrito")) {
     carritoObjeto.productos = JSON.parse(localStorage.getItem("carrito"));
     carritoObjeto.maxId = parseInt(localStorage.getItem("maxid"));
 
-    //setea el contador de productos del carrito en el navbar
-    document.getElementById("contadorCart").innerText = carritoObjeto.productos.length;
+    setTimeout(mostrarTabla(), 500); //timer para asegurar que la página cargue el localStorage
 };
 
-//eventos en botones de agregar producto
-let boton1 = document.getElementById("agregarBody");
-boton1.onclick = () => carritoObjeto.agregar(bodyAnnika);
+// setea eventos sobre el boton de vaciar carrito
+let botonVaciar = document.getElementById("vaciarCarrito");
+botonVaciar.onclick = () => carritoObjeto.vaciarElCarrito();
+botonVaciar.addEventListener("click", mostrarTabla);
 
-let boton2 = document.getElementById("agregarLolipop");
-boton2.onclick = () => carritoObjeto.agregar(ConjuLolipop);
+// setea eventos sobre el boton de checkout/finalizar compra
+let botonCheckout = document.getElementById("finalizarCompra");
+botonCheckout.addEventListener("click", function() { document.getElementById("irFinalizarCompra").click() });
 
-let boton3 = document.getElementById("agregarConjuAnnika");
-boton3.onclick = () => carritoObjeto.agregar(ConjuAnnika);
 
-let boton4 = document.getElementById("agregarSetGigiRojo");
-boton4.onclick = () => carritoObjeto.agregar(SetGigiRojo);
-
-let boton5 = document.getElementById("agregarMoira");
-boton5.onclick = () => carritoObjeto.agregar(ConjuMoira);
-
-let boton6 = document.getElementById("agregarComfy");
-boton6.onclick = () => carritoObjeto.agregar(ConjuComfy);
-
-let boton7 = document.getElementById("agregarMinervaNew");
-boton7.onclick = () => carritoObjeto.agregar(ConjuMinervaNew);
-
-let boton8 = document.getElementById("agregarSetGigiNegro");
-boton8.onclick = () => carritoObjeto.agregar(SetGigiNegro);
-
-let boton9 = document.getElementById("agregarAlondra");
-boton9.onclick = () => carritoObjeto.agregar(ConjuAlondra);
-
-let boton10 = document.getElementById("agregarAnnikaAro");
-boton10.onclick = () => carritoObjeto.agregar(ConjuAnnikaAro);
-
-let boton11 = document.getElementById("agregarPackBombis");
-boton11.onclick = () => carritoObjeto.agregar(PackBombis);
-
-let boton12 = document.getElementById("agregarMinervaClasico");
-boton12.onclick = () => carritoObjeto.agregar(ConjuMinervaClasico);
-
-/*
 //Carrito
 function mostrarTabla() {
-    //setTimeout(null, 100);
+    // deshabilita el boton de checkout
+    document.getElementById("finalizarCompra").setAttribute("disabled", "disabled")
 
     let tabla = document.getElementById("contenidoCarrito");
+    document.getElementById("contadorCart").innerText = carritoObjeto.productos.length;
+    
     tabla.innerHTML = "";
     if (carritoObjeto.productos.length > 0) {
-        document.getElementById("pTotal").hidden = false;
-        document.getElementById("pCuotas").hidden = false;
-        document.getElementById("selectCuotas").hidden = false;
-
-        document.getElementById("contadorCart").innerText = carritoObjeto.productos.length;
-
-
+        // si el carrito tiene elementos habilita el botón de checkout
+        document.getElementById("finalizarCompra").removeAttribute("disabled");
+        
         document.getElementById("textoCarritoVacio").innerText = "Su carrito contiene " + carritoObjeto.productos.length + " productos"; //contador carrito -->texto que avisa si tiene productos
         //  este producto es un productoCarrito
         for (const productoCart of carritoObjeto.productos) {
@@ -238,14 +195,6 @@ function mostrarTabla() {
 
         tabla.appendChild(row);
     } else {
-
-        document.getElementById("contadorCart").innerText = carritoObjeto.productos.length;
-        
         document.getElementById("textoCarritoVacio").innerText = "Su carrito se encuentra vacío"; //contador carrito
-
-        document.getElementById("pTotal").hidden = true;
-        document.getElementById("pCuotas").hidden = true;
-        document.getElementById("selectCuotas").hidden = true;
     }
 };
-*/

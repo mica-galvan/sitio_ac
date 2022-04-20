@@ -1,3 +1,5 @@
+//AGREGA SWEET ALERT AL BOTON ENVIAR
+
 const btn = document.querySelector('#myBtn')
 
 function submitForm() {
